@@ -139,8 +139,8 @@
     "/oauth/token": {
       "post": {
         "description": "The initial authentication process is via an OAuth 2.0 Password Grant with the same credentials used for tesla.com and the mobile apps.\nThe current client ID and secret are available here.\nYou will get back an access_token which is treated as an OAuth 2.0 Bearer Token. This token is passed along in an Authorization header with all future requests:",
-        "summary": "post-oauth-token?grant_type=password",
-        "operationId": "post-oauth-token?grant_type=password",
+        "summary": "post-oauth-token",
+        "operationId": "post-oauth-token",
         "deprecated": false,
         "produces": [
           "application/json"
