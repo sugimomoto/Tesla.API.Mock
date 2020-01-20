@@ -1,0 +1,2943 @@
+openapi: 3.0.0
+info:
+  title: Tesla API
+  version: '1.0'
+  description: |-
+    Tesla JSON API (Unofficial)
+
+    Reference :https://tesla-api.timdorr.com/vehicle/state/chargestate
+  contact:
+    name: kazuya sugimoto
+    email: sugimomoto@gmail.com
+    url: 'https://tesla-api.timdorr.com/vehicle/state/chargestate'
+servers:
+  - url: 'https://orgopenapitools20200118014702.azurewebsites.net/'
+paths:
+  '/api/1/vehicles/{id}/data_request/charge_state':
+    parameters:
+      - schema:
+          type: string
+          maxLength: 32
+          minLength: 0
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Charge State
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: Charge State
+                type: object
+                properties:
+                  response:
+                    type: object
+                    properties:
+                      battery_heater_on:
+                        type: boolean
+                        example: false
+                      battery_level:
+                        type: number
+                        example: 64
+                      battery_range:
+                        type: number
+                        example: 167.96
+                      charge_current_request:
+                        type: number
+                        example: 48
+                      charge_current_request_max:
+                        type: number
+                        example: 48
+                      charge_enable_request:
+                        type: boolean
+                        example: true
+                      charge_energy_added:
+                        type: number
+                        example: 12.41
+                      charge_limit_soc:
+                        type: number
+                        example: 90
+                      charge_limit_soc_max:
+                        type: number
+                        example: 100
+                      charge_limit_soc_min:
+                        type: number
+                        example: 50
+                      charge_limit_soc_std:
+                        type: number
+                        example: 90
+                      charge_miles_added_ideal:
+                        type: number
+                        example: 50
+                      charge_miles_added_rated:
+                        type: number
+                        example: 40
+                      charge_port_cold_weather_mode:
+                        type: boolean
+                        example: false
+                      charge_port_door_open:
+                        type: boolean
+                        example: false
+                      charge_port_latch:
+                        type: string
+                        example: Engaged
+                      charge_rate:
+                        type: number
+                        example: 0
+                      charge_to_max_range:
+                        type: boolean
+                        example: false
+                      charger_actual_current:
+                        type: number
+                        example: 0
+                      charger_pilot_current:
+                        type: number
+                        example: 48
+                      charger_power:
+                        type: number
+                        example: 0
+                      charger_voltage:
+                        type: number
+                        example: 0
+                      charging_state:
+                        type: string
+                        example: Disconnected
+                      conn_charge_cable:
+                        type: string
+                        example: '<invalid>'
+                      est_battery_range:
+                        type: number
+                        example: 116.67
+                      fast_charger_brand:
+                        type: string
+                        example: '<invalid>'
+                      fast_charger_present:
+                        type: boolean
+                        example: false
+                      fast_charger_type:
+                        type: string
+                        example: '<invalid>'
+                      ideal_battery_range:
+                        type: number
+                        example: 209.95
+                      managed_charging_active:
+                        type: boolean
+                        example: false
+                      managed_charging_user_canceled:
+                        type: boolean
+                        example: false
+                      max_range_charge_counter:
+                        type: number
+                        example: 0
+                      minutes_to_full_charge:
+                        type: number
+                        example: 0
+                      not_enough_power_to_heat:
+                        type: boolean
+                        example: false
+                      scheduled_charging_pending:
+                        type: boolean
+                        example: false
+                      time_to_full_charge:
+                        type: number
+                        example: 0
+                      timestamp:
+                        type: number
+                        example: 1543187621530
+                      trip_charging:
+                        type: boolean
+                        example: false
+                      usable_battery_level:
+                        type: number
+                        example: 64
+      operationId: get-api-1-vehicles-id-data_request-charge_state
+      description: |-
+        Information on the state of charge in the battery and its various settings.
+        https://tesla-api.timdorr.com/vehicle/state/chargestate
+      security: []
+  /api/1/vehicles:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: Vehicles
+                type: object
+                properties:
+                  response:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: number
+                          example: 12345678901234568
+                        vehicle_id:
+                          type: number
+                          example: 1234567890
+                        vin:
+                          type: string
+                          example: 5YJSA11111111111
+                        display_name:
+                          type: string
+                          example: Nikola 2.0
+                        option_codes:
+                          type: string
+                          example: 'MDLS,RENA,AF02,APF1,APH2,APPB,AU01,BC0R,BP00,BR00,BS00,CDM0,CH05,PBCW,CW00,DCF0,DRLH,DSH7,DV4W,FG02,FR04,HP00,IDBA,IX01,LP01,ME02,MI01,PF01,PI01,PK00,PS01,PX00,PX4D,QTVB,RFP2,SC01,SP00,SR01,SU01,TM00,TP03,TR00,UTAB,WTAS,X001,X003,X007,X011,X013,X021,X024,X027,X028,X031,X037,X040,X044,YFFC,COUS'
+                        tokens:
+                          type: array
+                          example:
+                            - abcdef1234567890
+                            - 1234567890abcdef
+                          items:
+                            type: string
+                        state:
+                          type: string
+                          example: online
+                        in_service:
+                          type: boolean
+                          example: false
+                        id_s:
+                          type: string
+                          example: '12345678901234567'
+                        calendar_enabled:
+                          type: boolean
+                          example: true
+                        api_version:
+                          type: number
+                          example: 7
+                  count:
+                    type: number
+                    example: 1
+      operationId: get-api-1-vehicles
+      description: |-
+        Retrieve a list of your owned vehicles (includes vehicles not yet shipped!)
+        https://tesla-api.timdorr.com/api-basics/vehicles
+      security: []
+  '/api/1/vehicles/{id}/vehicle_data':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: Data
+                type: object
+                properties:
+                  response:
+                    properties:
+                      id:
+                        type: number
+                        example: 12345678901234568
+                      user_id:
+                        type: number
+                        example: 123
+                      vehicle_id:
+                        type: number
+                        example: 1234567890
+                      vin:
+                        type: string
+                        example: 5YJSA11111111111
+                      display_name:
+                        type: string
+                        example: Nikola 2.0
+                      option_codes:
+                        type: string
+                        example: 'MDLS,RENA,AF02,APF1,APH2,APPB,AU01,BC0R,BP00,BR00,BS00,CDM0,CH05,PBCW,CW00,DCF0,DRLH,DSH7,DV4W,FG02,FR04,HP00,IDBA,IX01,LP01,ME02,MI01,PF01,PI01,PK00,PS01,PX00,PX4D,QTVB,RFP2,SC01,SP00,SR01,SU01,TM00,TP03,TR00,UTAB,WTAS,X001,X003,X007,X011,X013,X021,X024,X027,X028,X031,X037,X040,X044,YFFC,COUS'
+                      tokens:
+                        type: array
+                        items:
+                          type: string
+                        example:
+                          - abcdef1234567890
+                          - 1234567890abcdef
+                      state:
+                        type: string
+                        example: online
+                      in_service:
+                        type: boolean
+                        example: false
+                      id_s:
+                        type: string
+                        example: '12345678901234567'
+                      calendar_enabled:
+                        type: boolean
+                        example: true
+                      api_version:
+                        type: number
+                        example: 7
+                      drive_state:
+                        required:
+                          - gps_as_of
+                          - heading
+                          - latitude
+                          - longitude
+                          - native_latitude
+                          - native_location_supported
+                          - native_longitude
+                          - native_type
+                          - power
+                          - shift_state
+                          - speed
+                          - timestamp
+                        properties:
+                          gps_as_of:
+                            type: number
+                            example: 1538363883
+                          heading:
+                            type: number
+                            example: 5
+                          latitude:
+                            type: number
+                            example: 33.111111
+                          longitude:
+                            type: number
+                            example: -88.111111
+                          native_latitude:
+                            type: number
+                            example: 33.111111
+                          native_location_supported:
+                            type: number
+                            example: 1
+                          native_longitude:
+                            type: number
+                            example: -88.111111
+                          native_type:
+                            type: string
+                            example: wgs
+                          power:
+                            type: number
+                            example: 0
+                          timestamp:
+                            type: number
+                            example: 1538364666096
+                        type: object
+                      climate_state:
+                        required:
+                          - battery_heater
+                          - battery_heater_no_power
+                          - climate_keeper_mode
+                          - defrost_mode
+                          - driver_temp_setting
+                          - fan_status
+                          - inside_temp
+                          - is_auto_conditioning_on
+                          - is_climate_on
+                          - is_front_defroster_on
+                          - is_preconditioning
+                          - is_rear_defroster_on
+                          - left_temp_direction
+                          - max_avail_temp
+                          - min_avail_temp
+                          - outside_temp
+                          - passenger_temp_setting
+                          - remote_heater_control_enabled
+                          - right_temp_direction
+                          - seat_heater_left
+                          - seat_heater_rear_center
+                          - seat_heater_rear_left
+                          - seat_heater_rear_left_back
+                          - seat_heater_rear_right
+                          - seat_heater_rear_right_back
+                          - seat_heater_right
+                          - side_mirror_heaters
+                          - steering_wheel_heater
+                          - timestamp
+                          - wiper_blade_heater
+                        properties:
+                          battery_heater:
+                            type: boolean
+                            example: false
+                          battery_heater_no_power:
+                            type: boolean
+                            example: false
+                          climate_keeper_mode:
+                            type: string
+                            example: dog
+                          defrost_mode:
+                            type: number
+                            example: 0
+                          driver_temp_setting:
+                            type: number
+                            example: 21.6
+                          fan_status:
+                            type: number
+                            example: 0
+                          is_climate_on:
+                            type: boolean
+                            example: false
+                          is_front_defroster_on:
+                            type: boolean
+                            example: false
+                          is_preconditioning:
+                            type: boolean
+                            example: false
+                          is_rear_defroster_on:
+                            type: boolean
+                            example: false
+                          max_avail_temp:
+                            type: number
+                            example: 28
+                          min_avail_temp:
+                            type: number
+                            example: 15
+                          passenger_temp_setting:
+                            type: number
+                            example: 21.6
+                          remote_heater_control_enabled:
+                            type: boolean
+                            example: true
+                          seat_heater_left:
+                            type: number
+                            example: 3
+                          seat_heater_rear_center:
+                            type: number
+                            example: 0
+                          seat_heater_rear_left:
+                            type: number
+                            example: 1
+                          seat_heater_rear_left_back:
+                            type: number
+                            example: 0
+                          seat_heater_rear_right:
+                            type: number
+                            example: 1
+                          seat_heater_rear_right_back:
+                            type: number
+                            example: 0
+                          seat_heater_right:
+                            type: number
+                            example: 2
+                          side_mirror_heaters:
+                            type: boolean
+                            example: false
+                          steering_wheel_heater:
+                            type: boolean
+                            example: false
+                          timestamp:
+                            type: number
+                            example: 1543186971731
+                          wiper_blade_heater:
+                            type: boolean
+                            example: false
+                        type: object
+                      charge_state:
+                        required:
+                          - battery_heater_on
+                          - battery_level
+                          - battery_range
+                          - charge_current_request
+                          - charge_current_request_max
+                          - charge_enable_request
+                          - charge_energy_added
+                          - charge_limit_soc
+                          - charge_limit_soc_max
+                          - charge_limit_soc_min
+                          - charge_limit_soc_std
+                          - charge_miles_added_ideal
+                          - charge_miles_added_rated
+                          - charge_port_cold_weather_mode
+                          - charge_port_door_open
+                          - charge_port_latch
+                          - charge_rate
+                          - charge_to_max_range
+                          - charger_actual_current
+                          - charger_phases
+                          - charger_pilot_current
+                          - charger_power
+                          - charger_voltage
+                          - charging_state
+                          - conn_charge_cable
+                          - est_battery_range
+                          - fast_charger_brand
+                          - fast_charger_present
+                          - fast_charger_type
+                          - ideal_battery_range
+                          - managed_charging_active
+                          - managed_charging_start_time
+                          - managed_charging_user_canceled
+                          - max_range_charge_counter
+                          - minutes_to_full_charge
+                          - not_enough_power_to_heat
+                          - scheduled_charging_pending
+                          - scheduled_charging_start_time
+                          - time_to_full_charge
+                          - timestamp
+                          - trip_charging
+                          - usable_battery_level
+                          - user_charge_enable_request
+                        properties:
+                          battery_heater_on:
+                            type: boolean
+                            example: false
+                          battery_level:
+                            type: number
+                            example: 64
+                          battery_range:
+                            type: number
+                            example: 167.96
+                          charge_current_request:
+                            type: number
+                            example: 48
+                          charge_current_request_max:
+                            type: number
+                            example: 48
+                          charge_enable_request:
+                            type: boolean
+                            example: true
+                          charge_energy_added:
+                            type: number
+                            example: 12.41
+                          charge_limit_soc:
+                            type: number
+                            example: 90
+                          charge_limit_soc_max:
+                            type: number
+                            example: 100
+                          charge_limit_soc_min:
+                            type: number
+                            example: 50
+                          charge_limit_soc_std:
+                            type: number
+                            example: 90
+                          charge_miles_added_ideal:
+                            type: number
+                            example: 50
+                          charge_miles_added_rated:
+                            type: number
+                            example: 40
+                          charge_port_cold_weather_mode:
+                            type: boolean
+                            example: false
+                          charge_port_door_open:
+                            type: boolean
+                            example: false
+                          charge_port_latch:
+                            type: string
+                            example: Engaged
+                          charge_rate:
+                            type: number
+                            example: 0
+                          charge_to_max_range:
+                            type: boolean
+                            example: false
+                          charger_actual_current:
+                            type: number
+                            example: 0
+                          charger_pilot_current:
+                            type: number
+                            example: 48
+                          charger_power:
+                            type: number
+                            example: 0
+                          charger_voltage:
+                            type: number
+                            example: 0
+                          charging_state:
+                            type: string
+                            example: Disconnected
+                          conn_charge_cable:
+                            type: string
+                            example: '<invalid>'
+                          est_battery_range:
+                            type: number
+                            example: 118.38
+                          fast_charger_brand:
+                            type: string
+                            example: '<invalid>'
+                          fast_charger_present:
+                            type: boolean
+                            example: false
+                          fast_charger_type:
+                            type: string
+                            example: '<invalid>'
+                          ideal_battery_range:
+                            type: number
+                            example: 209.95
+                          managed_charging_active:
+                            type: boolean
+                            example: false
+                          managed_charging_user_canceled:
+                            type: boolean
+                            example: false
+                          max_range_charge_counter:
+                            type: number
+                            example: 0
+                          minutes_to_full_charge:
+                            type: number
+                            example: 0
+                          not_enough_power_to_heat:
+                            type: boolean
+                            example: false
+                          scheduled_charging_pending:
+                            type: boolean
+                            example: false
+                          time_to_full_charge:
+                            type: number
+                            example: 0
+                          timestamp:
+                            type: number
+                            example: 1543186971727
+                          trip_charging:
+                            type: boolean
+                            example: false
+                          usable_battery_level:
+                            type: number
+                            example: 64
+                        type: object
+                      gui_settings:
+                        required:
+                          - gui_24_hour_time
+                          - gui_charge_rate_units
+                          - gui_distance_units
+                          - gui_range_display
+                          - gui_temperature_units
+                          - show_range_units
+                          - timestamp
+                        properties:
+                          gui_24_hour_time:
+                            type: boolean
+                            example: false
+                          gui_charge_rate_units:
+                            type: string
+                            example: mi/hr
+                          gui_distance_units:
+                            type: string
+                            example: mi/hr
+                          gui_range_display:
+                            type: string
+                            example: Rated
+                          gui_temperature_units:
+                            type: string
+                            example: F
+                          show_range_units:
+                            type: boolean
+                            example: true
+                          timestamp:
+                            type: number
+                            example: 1543186971728
+                        type: object
+                      vehicle_state:
+                        required:
+                          - api_version
+                          - autopark_state_v2
+                          - autopark_style
+                          - calendar_supported
+                          - car_version
+                          - center_display_state
+                          - df
+                          - dr
+                          - fd_window
+                          - fp_window
+                          - ft
+                          - homelink_device_count
+                          - homelink_nearby
+                          - is_user_present
+                          - last_autopark_error
+                          - locked
+                          - media_state
+                          - notifications_supported
+                          - odometer
+                          - parsed_calendar_supported
+                          - pf
+                          - pr
+                          - rd_window
+                          - remote_start
+                          - remote_start_enabled
+                          - remote_start_supported
+                          - rp_window
+                          - rt
+                          - sentry_mode
+                          - sentry_mode_available
+                          - smart_summon_available
+                          - software_update
+                          - speed_limit_mode
+                          - summon_standby_mode_enabled
+                          - sun_roof_percent_open
+                          - sun_roof_state
+                          - timestamp
+                          - valet_mode
+                          - valet_pin_needed
+                          - vehicle_name
+                        properties:
+                          api_version:
+                            type: number
+                            example: 7
+                          autopark_state_v2:
+                            type: string
+                            example: standby
+                          autopark_style:
+                            type: string
+                            example: standard
+                          calendar_supported:
+                            type: boolean
+                            example: true
+                          car_version:
+                            type: string
+                            example: 2019.40.2.1 38f55d9f9205
+                          center_display_state:
+                            type: number
+                            example: 0
+                          df:
+                            type: number
+                            example: 0
+                          dr:
+                            type: number
+                            example: 0
+                          fd_window:
+                            type: number
+                            example: 0
+                          fp_window:
+                            type: number
+                            example: 0
+                          ft:
+                            type: number
+                            example: 0
+                          homelink_device_count:
+                            type: number
+                            example: 0
+                          homelink_nearby:
+                            type: boolean
+                            example: true
+                          is_user_present:
+                            type: boolean
+                            example: false
+                          last_autopark_error:
+                            type: string
+                            example: no_error
+                          locked:
+                            type: boolean
+                            example: true
+                          media_state:
+                            required:
+                              - remote_control_enabled
+                            properties:
+                              remote_control_enabled:
+                                type: boolean
+                                example: true
+                            type: object
+                          notifications_supported:
+                            type: boolean
+                            example: true
+                          odometer:
+                            type: number
+                            example: 33561.422505
+                          parsed_calendar_supported:
+                            type: boolean
+                            example: true
+                          pf:
+                            type: number
+                            example: 0
+                          pr:
+                            type: number
+                            example: 0
+                          rd_window:
+                            type: number
+                            example: 0
+                          remote_start:
+                            type: boolean
+                            example: false
+                          remote_start_enabled:
+                            type: boolean
+                            example: true
+                          remote_start_supported:
+                            type: boolean
+                            example: true
+                          rp_window:
+                            type: number
+                            example: 0
+                          rt:
+                            type: number
+                            example: 0
+                          sentry_mode:
+                            type: boolean
+                            example: true
+                          sentry_mode_available:
+                            type: boolean
+                            example: true
+                          smart_summon_available:
+                            type: boolean
+                            example: true
+                          software_update:
+                            required:
+                              - download_perc
+                              - expected_duration_sec
+                              - install_perc
+                              - scheduled_time_ms
+                              - status
+                              - version
+                            properties:
+                              download_perc:
+                                type: number
+                                example: 100
+                              expected_duration_sec:
+                                type: number
+                                example: 2700
+                              install_perc:
+                                type: number
+                                example: 10
+                              scheduled_time_ms:
+                                type: number
+                                example: 1575689678432
+                              status:
+                                type: string
+                                example: scheduled
+                              version:
+                                type: string
+                                example: 2019.40.2.1
+                            type: object
+                          speed_limit_mode:
+                            required:
+                              - active
+                              - current_limit_mph
+                              - max_limit_mph
+                              - min_limit_mph
+                              - pin_code_set
+                            properties:
+                              active:
+                                type: boolean
+                                example: false
+                              current_limit_mph:
+                                type: number
+                                example: 75
+                              max_limit_mph:
+                                type: number
+                                example: 90
+                              min_limit_mph:
+                                type: number
+                                example: 50
+                              pin_code_set:
+                                type: boolean
+                                example: false
+                            type: object
+                          summon_standby_mode_enabled:
+                            type: boolean
+                            example: true
+                          sun_roof_percent_open:
+                            type: number
+                            example: 0
+                          sun_roof_state:
+                            type: string
+                            example: unknown
+                          timestamp:
+                            type: number
+                            example: 1538364666096
+                          valet_mode:
+                            type: boolean
+                            example: false
+                          valet_pin_needed:
+                            type: boolean
+                            example: true
+                          vehicle_name:
+                            type: string
+                            example: Nikola 2.0
+                        type: object
+                      vehicle_config:
+                        required:
+                          - can_accept_navigation_requests
+                          - can_actuate_trunks
+                          - car_special_type
+                          - car_type
+                          - charge_port_type
+                          - eu_vehicle
+                          - exterior_color
+                          - has_air_suspension
+                          - has_ludicrous_mode
+                          - key_version
+                          - motorized_charge_port
+                          - perf_config
+                          - plg
+                          - rear_seat_heaters
+                          - rear_seat_type
+                          - rhd
+                          - roof_color
+                          - seat_type
+                          - spoiler_type
+                          - sun_roof_installed
+                          - third_row_seats
+                          - timestamp
+                          - trim_badging
+                          - use_range_badging
+                          - wheel_type
+                        properties:
+                          can_accept_navigation_requests:
+                            type: boolean
+                            example: true
+                          can_actuate_trunks:
+                            type: boolean
+                            example: true
+                          car_special_type:
+                            type: string
+                            example: base
+                          car_type:
+                            type: string
+                            example: models2
+                          charge_port_type:
+                            type: string
+                            example: US
+                          eu_vehicle:
+                            type: boolean
+                            example: false
+                          exterior_color:
+                            type: string
+                            example: White
+                          has_air_suspension:
+                            type: boolean
+                            example: true
+                          has_ludicrous_mode:
+                            type: boolean
+                            example: false
+                          key_version:
+                            type: number
+                            example: 1
+                          motorized_charge_port:
+                            type: boolean
+                            example: true
+                          perf_config:
+                            type: string
+                            example: P2
+                          plg:
+                            type: boolean
+                            example: true
+                          rear_seat_heaters:
+                            type: number
+                            example: 0
+                          rear_seat_type:
+                            type: number
+                            example: 0
+                          rhd:
+                            type: boolean
+                            example: false
+                          roof_color:
+                            type: string
+                            example: None
+                          seat_type:
+                            type: number
+                            example: 2
+                          spoiler_type:
+                            type: string
+                            example: None
+                          sun_roof_installed:
+                            type: number
+                            example: 2
+                          third_row_seats:
+                            type: string
+                            example: None
+                          timestamp:
+                            type: number
+                            example: 1538364666096
+                          trim_badging:
+                            type: string
+                            example: p90d
+                          use_range_badging:
+                            type: boolean
+                            example: false
+                          wheel_type:
+                            type: string
+                            example: AeroTurbine19
+                        type: object
+                    type: object
+      operationId: get-api-1-vehicles-id-vehicle_data
+      description: |-
+        A rollup of all the data_request endpoints plus vehicle configuration.
+        Note: all *_range values are in miles, irrespective of GUI configuration.
+        https://tesla-api.timdorr.com/vehicle/state/data
+      security: []
+  '/api/1/vehicles/{id}/data_request/climate_state':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: Climate State
+                type: object
+                properties:
+                  response:
+                    type: object
+                    properties:
+                      battery_heater:
+                        type: boolean
+                        example: false
+                      battery_heater_no_power:
+                        type: boolean
+                        example: false
+                      climate_keeper_mode:
+                        type: string
+                        example: dog
+                      defrost_mode:
+                        type: number
+                        example: 0
+                      driver_temp_setting:
+                        type: number
+                        example: 21.6
+                      fan_status:
+                        type: number
+                        example: 0
+                      is_climate_on:
+                        type: boolean
+                        example: false
+                      is_front_defroster_on:
+                        type: boolean
+                        example: false
+                      is_preconditioning:
+                        type: boolean
+                        example: false
+                      is_rear_defroster_on:
+                        type: boolean
+                        example: false
+                      max_avail_temp:
+                        type: number
+                        example: 28
+                      min_avail_temp:
+                        type: number
+                        example: 15
+                      passenger_temp_setting:
+                        type: number
+                        example: 21.6
+                      remote_heater_control_enabled:
+                        type: boolean
+                        example: true
+                      seat_heater_left:
+                        type: number
+                        example: 3
+                      seat_heater_rear_center:
+                        type: number
+                        example: 0
+                      seat_heater_rear_left:
+                        type: number
+                        example: 1
+                      seat_heater_rear_left_back:
+                        type: number
+                        example: 0
+                      seat_heater_rear_right:
+                        type: number
+                        example: 1
+                      seat_heater_rear_right_back:
+                        type: number
+                        example: 0
+                      seat_heater_right:
+                        type: number
+                        example: 2
+                      side_mirror_heaters:
+                        type: boolean
+                        example: false
+                      steering_wheel_heater:
+                        type: boolean
+                        example: false
+                      timestamp:
+                        type: number
+                        example: 1543187641727
+                      wiper_blade_heater:
+                        type: boolean
+                        example: false
+      operationId: get-api-1-vehicles-id-data_request-climate_state
+      description: |-
+        Information on the current internal temperature and climate control system.
+        https://tesla-api.timdorr.com/vehicle/state/climatestate
+      security: []
+  /oauth/token:
+    post:
+      summary: ''
+      operationId: post-oauth-token
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: authentication-response
+                type: object
+                properties:
+                  created_at:
+                    type: number
+                    example: 1538359034
+                  refresh_token:
+                    type: string
+                    example: cba321
+                  expires_in:
+                    type: number
+                    example: 3888000
+                  token_type:
+                    type: string
+                    example: bearer
+                  access_token:
+                    type: string
+                    example: abc123
+      description: |-
+        The initial authentication process is via an OAuth 2.0 Password Grant with the same credentials used for tesla.com and the mobile apps.
+        The current client ID and secret are available here.
+        You will get back an access_token which is treated as an OAuth 2.0 Bearer Token. This token is passed along in an Authorization header with all future requests:
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - password
+          in: header
+          name: grant_type
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: authentication-request
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: edisonsux
+                email:
+                  type: string
+                  example: elon@teslamotors.com
+                client_secret:
+                  type: string
+                  example: '123'
+                client_id:
+                  type: string
+                  example: abc
+                grant_type:
+                  type: string
+                  example: password
+            examples:
+              example-1: {}
+          application/xml:
+            schema:
+              type: object
+              properties: {}
+        description: ''
+    parameters: []
+  '/api/1/vehicles/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: vehicle
+                type: object
+                properties:
+                  response:
+                    required:
+                      - id
+                      - vehicle_id
+                      - vin
+                      - display_name
+                      - option_codes
+                      - color
+                      - tokens
+                      - state
+                      - in_service
+                      - id_s
+                      - calendar_enabled
+                      - api_version
+                      - backseat_token
+                      - backseat_token_updated_at
+                    properties:
+                      id:
+                        type: number
+                        example: 12345678901234568
+                      vehicle_id:
+                        type: number
+                        example: 1234567890
+                      vin:
+                        type: string
+                        example: 5YJSA11111111111
+                      display_name:
+                        type: string
+                        example: Nikola 2.0
+                      option_codes:
+                        type: string
+                        example: 'MDLS,RENA,AF02,APF1,APH2,APPB,AU01,BC0R,BP00,BR00,BS00,CDM0,CH05,PBCW,CW00,DCF0,DRLH,DSH7,DV4W,FG02,FR04,HP00,IDBA,IX01,LP01,ME02,MI01,PF01,PI01,PK00,PS01,PX00,PX4D,QTVB,RFP2,SC01,SP00,SR01,SU01,TM00,TP03,TR00,UTAB,WTAS,X001,X003,X007,X011,X013,X021,X024,X027,X028,X031,X037,X040,X044,YFFC,COUS'
+                      tokens:
+                        type: array
+                        items:
+                          type: string
+                        example:
+                          - abcdef1234567890
+                          - 1234567890abcdef
+                      state:
+                        type: string
+                        example: online
+                      in_service:
+                        type: boolean
+                        example: false
+                      id_s:
+                        type: string
+                        example: '12345678901234567'
+                      calendar_enabled:
+                        type: boolean
+                        example: true
+                      api_version:
+                        type: number
+                        example: 7
+                    type: object
+      operationId: get-api-1-vehicles-id
+      description: "These resources are read-only and determine the state of the vehicle's various sub-systems."
+      security: []
+  '/api/1/vehicles/{id}/data_request/drive_state':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: Drive State
+                type: object
+                properties:
+                  response:
+                    type: object
+                    properties:
+                      gps_as_of:
+                        type: number
+                        example: 1543187664
+                      heading:
+                        type: number
+                        example: 8
+                      latitude:
+                        type: number
+                        example: 33.111111
+                      longitude:
+                        type: number
+                        example: -88.111111
+                      native_latitude:
+                        type: number
+                        example: 33.111111
+                      native_location_supported:
+                        type: number
+                        example: 1
+                      native_longitude:
+                        type: number
+                        example: -88.111111
+                      native_type:
+                        type: string
+                        example: wgs
+                      power:
+                        type: number
+                        example: 0
+                      timestamp:
+                        type: number
+                        example: 1543187666472
+      operationId: get-api-1-vehicles-id-data_request-drive_state
+      description: Returns the driving and position state of the vehicle.
+  '/api/1/vehicles/{id}/data_request/gui_settings':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: GUI Settings
+                type: object
+                properties:
+                  response:
+                    type: object
+                    properties:
+                      gui_24_hour_time:
+                        type: boolean
+                        example: false
+                      gui_charge_rate_units:
+                        type: string
+                        example: mi/hr
+                      gui_distance_units:
+                        type: string
+                        example: mi/hr
+                      gui_range_display:
+                        type: string
+                        example: Rated
+                      gui_temperature_units:
+                        type: string
+                        example: F
+                      show_range_units:
+                        type: boolean
+                        example: true
+                      timestamp:
+                        type: number
+                        example: 1543187561462
+      operationId: get-api-1-vehicles-id-data_request-gui_settings
+      description: 'Returns various information about the GUI settings of the car, such as unit format and range display.'
+  '/api/1/vehicles/{id}/data_request/vehicle_stat':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: Vehicle State
+                type: object
+                properties:
+                  response:
+                    type: object
+                    properties:
+                      api_version:
+                        type: number
+                        example: 7
+                      autopark_state_v3:
+                        type: string
+                        example: standby
+                      autopark_style:
+                        type: string
+                        example: dead_man
+                      calendar_supported:
+                        type: boolean
+                        example: true
+                      car_version:
+                        type: string
+                        example: 2019.40.2.1 38f55d9f9205
+                      center_display_state:
+                        type: number
+                        example: 0
+                      df:
+                        type: number
+                        example: 0
+                      dr:
+                        type: number
+                        example: 0
+                      fd_window:
+                        type: number
+                        example: 0
+                      fp_window:
+                        type: number
+                        example: 0
+                      ft:
+                        type: number
+                        example: 0
+                      homelink_device_count:
+                        type: number
+                        example: 0
+                      homelink_nearby:
+                        type: boolean
+                        example: true
+                      is_user_present:
+                        type: boolean
+                        example: false
+                      last_autopark_error:
+                        type: string
+                        example: no_error
+                      locked:
+                        type: boolean
+                        example: true
+                      media_state:
+                        required:
+                          - remote_control_enabled
+                        properties:
+                          remote_control_enabled:
+                            type: boolean
+                            example: true
+                        type: object
+                      notifications_supported:
+                        type: boolean
+                        example: true
+                      odometer:
+                        type: number
+                        example: 36051.517239
+                      parsed_calendar_supported:
+                        type: boolean
+                        example: true
+                      pf:
+                        type: number
+                        example: 0
+                      pr:
+                        type: number
+                        example: 0
+                      rd_window:
+                        type: number
+                        example: 0
+                      remote_start:
+                        type: boolean
+                        example: false
+                      remote_start_enabled:
+                        type: boolean
+                        example: true
+                      remote_start_supported:
+                        type: boolean
+                        example: true
+                      rp_window:
+                        type: number
+                        example: 0
+                      rt:
+                        type: number
+                        example: 0
+                      sentry_mode:
+                        type: boolean
+                        example: true
+                      sentry_mode_available:
+                        type: boolean
+                        example: true
+                      smart_summon_available:
+                        type: boolean
+                        example: true
+                      software_update:
+                        required:
+                          - download_perc
+                          - expected_duration_sec
+                          - install_perc
+                          - scheduled_time_ms
+                          - status
+                          - version
+                        properties:
+                          download_perc:
+                            type: number
+                            example: 100
+                          expected_duration_sec:
+                            type: number
+                            example: 2700
+                          install_perc:
+                            type: number
+                            example: 10
+                          scheduled_time_ms:
+                            type: number
+                            example: 1575689678432
+                          status:
+                            type: string
+                            example: scheduled
+                          version:
+                            type: string
+                            example: 2019.40.2.1
+                        type: object
+                      speed_limit_mode:
+                        required:
+                          - active
+                          - current_limit_mph
+                          - max_limit_mph
+                          - min_limit_mph
+                          - pin_code_set
+                        properties:
+                          active:
+                            type: boolean
+                            example: false
+                          current_limit_mph:
+                            type: number
+                            example: 50
+                          max_limit_mph:
+                            type: number
+                            example: 90
+                          min_limit_mph:
+                            type: number
+                            example: 50
+                          pin_code_set:
+                            type: boolean
+                            example: false
+                        type: object
+                      summon_standby_mode_enabled:
+                        type: boolean
+                        example: true
+                      sun_roof_percent_open:
+                        type: number
+                        example: 0
+                      sun_roof_state:
+                        type: string
+                        example: unknown
+                      timestamp:
+                        type: number
+                        example: 1543187581934
+                      valet_mode:
+                        type: boolean
+                        example: false
+                      valet_pin_needed:
+                        type: boolean
+                        example: true
+                      vehicle_name:
+                        type: string
+                        example: Nikola 2.0
+      operationId: get-api-1-vehicles-id-data_request-vehicle_stat
+      description: |-
+        Returns the vehicle's physical state, such as which doors are open.
+        For the trunk (rt) and frunk (ft) fields, you should interpret a zero (0) value as closed and a non-zero value as open (partially or fully).
+  '/api/1/vehicles/{id}/data_request/vehicle_config':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: Vehicle Config
+                type: object
+                properties:
+                  response:
+                    properties:
+                      can_accept_navigation_requests:
+                        type: boolean
+                        example: true
+                      can_actuate_trunks:
+                        type: boolean
+                        example: true
+                      car_special_type:
+                        type: string
+                        example: base
+                      car_type:
+                        type: string
+                        example: models2
+                      charge_port_type:
+                        type: string
+                        example: US
+                      eu_vehicle:
+                        type: boolean
+                        example: false
+                      exterior_color:
+                        type: string
+                        example: White
+                      has_air_suspension:
+                        type: boolean
+                        example: true
+                      has_ludicrous_mode:
+                        type: boolean
+                        example: false
+                      key_version:
+                        type: number
+                        example: 1
+                      motorized_charge_port:
+                        type: boolean
+                        example: true
+                      perf_config:
+                        type: string
+                        example: P2
+                      plg:
+                        type: boolean
+                        example: true
+                      rear_seat_heaters:
+                        type: number
+                        example: 0
+                      rear_seat_type:
+                        type: number
+                        example: 0
+                      rhd:
+                        type: boolean
+                        example: false
+                      roof_color:
+                        type: string
+                        example: None
+                      seat_type:
+                        type: number
+                        example: 2
+                      spoiler_type:
+                        type: string
+                        example: None
+                      sun_roof_installed:
+                        type: number
+                        example: 2
+                      third_row_seats:
+                        type: string
+                        example: None
+                      timestamp:
+                        type: number
+                        example: 1538364666096
+                      trim_badging:
+                        type: string
+                        example: p90d
+                      wheel_type:
+                        type: string
+                        example: AeroTurbine19
+                    type: object
+      operationId: get-api-1-vehicles-id-data_request-vehicle_config
+      description: "Returns the vehicle's configuration information including model, color, badging and wheels."
+  '/api/1/vehicles/{id}/mobile_enabled':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: Mobile Enabled
+                type: object
+                properties:
+                  response:
+                    type: boolean
+                    example: true
+      operationId: get-api-1-vehicles-id-mobile_enabled
+  '/api/1/vehicles/{id}/nearby_charging_sites':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: Nearby Charging Sites
+                type: object
+                properties:
+                  response:
+                    required:
+                      - congestion_sync_time_utc_secs
+                      - destination_charging
+                      - superchargers
+                      - timestamp
+                    properties:
+                      congestion_sync_time_utc_secs:
+                        type: number
+                        example: 1545091987
+                      destination_charging:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            location:
+                              required:
+                                - lat
+                                - long
+                              properties:
+                                lat:
+                                  type: number
+                                  example: 33.811484
+                                long:
+                                  type: number
+                                  example: -118.138451
+                              type: object
+                            name:
+                              type: string
+                              example: Long Beach Marriott
+                            type:
+                              type: string
+                              example: destination
+                            distance_miles:
+                              type: number
+                              example: 2.201606
+                      superchargers:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            location:
+                              required:
+                                - lat
+                                - long
+                              properties:
+                                lat:
+                                  type: number
+                                  example: 33.934471
+                                long:
+                                  type: number
+                                  example: -118.121217
+                              type: object
+                            name:
+                              type: string
+                              example: 'Downey, CA - Stonewood Street'
+                            type:
+                              type: string
+                              example: supercharger
+                            distance_miles:
+                              type: number
+                              example: 2.196721
+                            available_stalls:
+                              type: number
+                              example: 5
+                            total_stalls:
+                              type: number
+                              example: 12
+                            site_closed:
+                              type: boolean
+                              example: false
+                      timestamp:
+                        type: number
+                        example: 1545092157769
+                    type: object
+              examples:
+                example-1: {}
+      operationId: get-api-1-vehicles-id-nearby_charging_sites
+      description: Returns a list of nearby Tesla-operated charging stations. (Requires car software version 2018.48 or higher.)
+  '/api/1/vehicles/{id}/wake_up':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-wake_up
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: wakeup-respponse
+                type: object
+                properties:
+                  id:
+                    type: string
+      description: Wakes up the car from a sleeping state.
+  '/api/1/vehicles/{id}/command/honk_horn':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-honk_horn
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Honks the horn twice.
+  '/api/1/vehicles/{id}/command/flash_lights':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-flash_lights
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Flashes the headlights once.
+  '/api/1/vehicles/{id}/command/remote_start_drive':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-remote_start_drive
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Enables keyless driving. There is a two minute window after issuing the command to start driving the car.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: password
+          description: The password for the authenticated tesla.com account.
+          required: true
+  '/api/1/vehicles/{id}/command/trigger_homelink':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-trigger_homelink
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Opens or closes the primary Homelink device. The provided location must be in proximity of stored location of the Homelink device.
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: lat
+          description: Current lattitude.
+        - schema:
+            type: number
+          in: query
+          name: lon
+          description: Current longitude.
+  '/api/1/vehicles/{id}/command/speed_limit_set_limit':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-speed_limit_set_limit
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Sets the maximum speed allowed when Speed Limit Mode is active.
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: limit_mph
+          description: The speed limit in MPH. Must be between 50-90.
+  '/api/1/vehicles/{id}/command/speed_limit_activate':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-speed_limit_activate
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Activates Speed Limit Mode at the currently set speed.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: pin
+          description: 'The existing PIN, if previously set, or a new 4 digit PIN.'
+  '/api/1/vehicles/{id}/command/speed_limit_deactivate':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-speed_limit_deactivate
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Deactivates Speed Limit Mode if it is currently active.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: pin
+          description: The 4 digit PIN used to activate Speed Limit Mode.
+  '/api/1/vehicles/{id}/command/speed_limit_clear_pin':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-speed_limit_clear_pin
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Clears the currently set PIN for Speed Limit Mode.
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: ping
+          description: The 4 digit PIN used to activate Speed Limit Mode.
+  '/api/1/vehicles/{id}/command/set_valet_mode':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-set_valet_mode
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: "Valet Mode limits the car's top speed to 70MPH and 80kW of acceleration power. It also disables Homelink, Bluetooth and Wifi settings, and the ability to disable mobile access to the car. It also hides your favorites, home, and work locations in navigation."
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: 'on'
+          description: 'true to activate, false to deactivate. Must include previous PIN if deactivating.'
+        - schema:
+            type: string
+          in: query
+          name: password
+          description: A PIN to deactivate Valet Mode. Can be blank if activating with a previous PIN.
+  '/api/1/vehicles/{id}/command/reset_valet_pin':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-reset_valet_pin
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Clears the currently set PIN for Valet Mode when deactivated. A new PIN will be required when activating again.
+  '/api/1/vehicles/{id}/command/set_sentry_mode':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-set_sentry_mode
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Turns sentry mode on or off.
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: 'on'
+          description: 'True to turn on, false to turn off.'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+  '/api/1/vehicles/{id}/command/door_unlock':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-door_unlock
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Unlocks the doors to the car. Extends the handles on the S and X.
+  '/api/1/vehicles/{id}/command/door_lock':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-door_lock
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: 'Locks the doors to the car. Retracts the handles on the S and X, if they are extended.'
+  '/api/1/vehicles/{id}/command/actuate_trunk':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-actuate_trunk
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: 'Opens either the front or rear trunk. On the Model S and X, it will also close the rear trunk.'
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - rear
+              - front
+          in: query
+          name: which_trunk
+          description: Which trunk to open/close. rear and front are the only options.
+  '/api/1/vehicles/{id}/command/window_control':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-window_control
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: |-
+        Controls the windows. Will vent or close all windows simultaneously.
+        lat and lon values must be near the current location of the car for close operation to succeed. For vent, the lat and lon values are ignored, and may both be 0 (which has been observed from the app itself).
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - vent
+              - close
+          in: query
+          name: command
+          description: What action to take with the windows. Allows the values vent and close.
+        - schema:
+            type: number
+          in: query
+          name: lat
+          description: Your current latitude.  See Notes above.
+        - schema:
+            type: number
+          in: query
+          description: Your current longitude.  See Notes above.
+          name: lon
+  '/api/1/vehicles/{id}/command/sun_roof_control':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-sun_roof_control
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: |-
+        Controls the panoramic sunroof on the Model S.
+        Note: There were state options for open (100%), comfort (~80%), and move (combined with a percent parameter), but they have since been disabled server side. It is unknown if they will return at a later time.
+      parameters:
+        - schema:
+            type: string
+            enum:
+              - vent
+              - close
+          in: query
+          name: state
+          description: The amount to open the sunroof. Currently this only allows the values vent and close.
+  '/api/1/vehicles/{id}/command/charge_port_door_open':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-charge_port_door_open
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Opens the charge port.
+  '/api/1/vehicles/{id}/command/charge_port_door_close':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-charge_port_door_close
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: 'For vehicles with a motorized charge port, this closes it.'
+  '/api/1/vehicles/{id}/command/charge_start':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-charge_start
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: 'If the car is plugged in but not currently charging, this will start it charging.'
+  '/api/1/vehicles/{id}/command/charge_stop':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-charge_stop
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: 'If the car is currently charging, this will stop it.'
+  '/api/1/vehicles/{id}/command/charge_standard':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-charge_standard
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: 'Sets the charge limit to "standard" or ~90%.'
+  '/api/1/vehicles/{id}/command/charge_max_range':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-charge_max_range
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: 'Sets the charge limit to "max range" or 100%.'
+  '/api/1/vehicles/{id}/command/set_charge_limit':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-set_charge_limit
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Sets the charge limit to a custom value.
+  '/api/1/vehicles/{id}/command/auto_conditioning_start':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-auto_conditioning_start
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: 'Start the climate control (HVAC) system. Will cool or heat automatically, depending on set temperature.'
+  '/api/1/vehicles/{id}/command/auto_conditioning_stop':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-auto_conditioning_stop
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Stop the climate control (HVAC) system.
+  '/api/1/vehicles/{id}/command/set_temps':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-set_temps
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: |-
+        Sets the target temperature for the climate control (HVAC) system.
+        Note: The parameters are always in celsius, regardless of the region the car is in or the display settings of the car.
+      parameters:
+        - schema:
+            type: number
+          in: query
+          name: driver_temp
+          description: "The desired temperature on the driver's side in celsius."
+        - schema:
+            type: number
+          in: query
+          name: passenger_temp
+          description: "The desired temperature on the passenger's side in celsius."
+  '/api/1/vehicles/{id}/command/set_preconditioning_max':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-set_preconditioning_max
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Toggles the climate controls between Max Defrost and the previous setting.
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: 'on'
+          description: 'True to turn on, false to turn off.'
+  '/api/1/vehicles/{id}/command/remote_seat_heater_request':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-remote_seat_heater_request
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: "Sets the specified seat's heater level."
+      parameters:
+        - schema:
+            type: integer
+            maximum: 5
+            minimum: 0
+          in: query
+          name: heater
+          description: The desired seat to heat. (0-5)
+        - schema:
+            type: integer
+            minimum: 0
+            maximum: 3
+          in: query
+          name: level
+          description: The desired level for the heater. (0-3)
+  '/api/1/vehicles/{id}/command/remote_steering_wheel_heater_request':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-remote_steering_wheel_heater_request
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Turn steering wheel heater on or off.
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: 'on'
+          description: 'True to turn on, false to turn off.'
+  '/api/1/vehicles/{id}/command/media_toggle_playback':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-media_toggle_playback
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: 'Toggles the media between playing and paused. For the radio, this mutes or unmutes the audio.'
+  '/api/1/vehicles/{id}/command/media_next_track':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-media_next_track
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Skips to the next track in the current playlist.
+  '/api/1/vehicles/{id}/command/media_prev_track':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-media_prev_track
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Skips to the previous track in the current playlist. Does nothing for streaming from Stitcher.
+  '/api/1/vehicles/{id}/command/media_next_fav':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-media_next_fav
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Skips to the next saved favorite in the media system.
+  '/api/1/vehicles/{id}/command/media_prev_fav':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-media_prev_fav
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Skips to the previous saved favorite in the media system.
+  '/api/1/vehicles/{id}/command/media_volume_up':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-media_volume_up
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Turns up the volume of the media system.
+  '/api/1/vehicles/{id}/command/media_volume_down':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-media_volume_down
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: Turns down the volume of the media system.
+  '/api/1/vehicles/{id}/command/share':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-share
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: |-
+        Sends a location for the car to start navigation or play a video in theatre mode.
+        These docs take from the Android app, which sends the data in JSON form. However, a urlencoded POST body will work as well. The basic format to a request looks like this:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: command-share-request
+              type: object
+              properties:
+                timestamp_ms:
+                  type: string
+                  example: '1539465730'
+                locale:
+                  type: string
+                  example: en-US
+                value:
+                  required:
+                    - android.intent.extra.TEXT
+                  properties:
+                    android.intent.extra.TEXT:
+                      type: string
+                      example: |-
+                        123 Main St, City, ST 12345
+
+                        https://goo.gl/maps/X
+                  type: object
+                type:
+                  type: string
+                  example: share_ext_content_raw
+  '/api/1/vehicles/{id}/command/schedule_software_update':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-schedule_software_update
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: 'Schedules a software update to be installed, if one is available.'
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: offset_sec
+          description: How many seconds in the future to schedule the update. Set to 0 for immediate install.
+  '/api/1/vehicles/{id}/command/cancel_software_update':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-api-1-vehicles-id-command-cancel_software_update
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: basic-command-response
+                type: object
+                properties:
+                  reason:
+                    type: string
+                    example: Sample Response
+                  result:
+                    type: boolean
+                    example: true
+      description: 'Cancels a software update, if one is scheduled and has not yet started.'
+components:
+  schemas: {}
+  securitySchemes: {}
